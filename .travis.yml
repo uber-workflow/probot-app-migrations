@@ -3,10 +3,18 @@ sudo: false
 language: node_js
 node_js: 8.6.0
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.2.0
-  - export PATH=$HOME/.yarn/bin:$PATH
+- curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.2.1
+- export PATH=$HOME/.yarn/bin:$PATH
+- yarn global add greenkeeper-lockfile@1
 cache:
   yarn: true
-before_install: yarn global add greenkeeper-lockfile@1
 before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
+deploy:
+  provider: npm
+  email: rtsao@uber.com
+  api_key:
+    secure: LZCmUIbTFmre81/f2HBvKuPSDZW8eJHe6GOIffHQ40mTHIxNZOZ6CKzRZSAmCEGyqQ1EiGHrjMJhyJLiC/VhzbHsfYLeJicb+XU5wiMxpegWleZQJL3Svk0NfXF2Z0Q9q9IR1iGvdX9QjZz+FR1CCZSicgNoJipndHNz5126pSukrkHvMpZI2U1Az97v2y/UbLv4WjZbz4n045KrX8QaUso/saIxGfUgdV1u8IcTnua4jgVxLiE/SVaV52caEeLF63CPU3efuGA8WC4KBI5iDqB2rZ72XEoASvVZmCV1jqqeK23inhwv5Fa8hcq3wjMXktdpnI+F8k0pQXepXnT87FyAD8JrEo7pVYsR5Sdx2ejV1TjZHuSS+doN64QBC6/zFe7FLI1Xz4lePmph3LmlfKQUu0UQTTjZkoySTc566Xdpz4vjYGe0yepxEzh4VtxpMQZLoECrVahzFb61Ri/0rjjsKI8FyE9eczjfgtK+6nxamCrac7nmKp8ZXwVAU1I9EuRE3q8NVUplU9VWA45FjDFkLQW9bQo3UFm8EDSyPeNIj27sLUmoNkkp8LWkaZygYotIbLf1cQXzKRFLPW9hV3ENbhZdnWt2Wdd8244Kfx1Ec/lJQjo1WQdteqgIsEV+k0EMaB5hqPuvKFXZxM+QHngKkykdqPI5BJNeEuLrxts=
+  on:
+    tags: true
+    repo: uber-web/probot-app-migrations
