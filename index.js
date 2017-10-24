@@ -27,6 +27,7 @@ module.exports = robot => {
   robot.on('pull_request.unlabeled', check);
 
   async function check(context) {
+    const {github} = context;
     const pr = context.payload.pull_request;
 
     function setStatus(status) {
