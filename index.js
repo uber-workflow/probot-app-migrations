@@ -21,7 +21,7 @@ const statuses = {
 module.exports = robot => {
   robot.on('pull_request.opened', check);
   robot.on('pull_request.edited', check);
-  robot.on('pull_request.synchronize', check);
+  robot.on('pull_request.synchronized', check);
   robot.on('pull_request.updated', check);
   robot.on('pull_request.labeled', check);
   robot.on('pull_request.unlabeled', check);
