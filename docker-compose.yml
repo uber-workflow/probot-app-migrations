@@ -1,0 +1,7 @@
+version: '2'
+services:
+  probot-app-migrations:
+    build: .
+    volumes:
+      - .:/probot-app-migrations
+      - /probot-app-migrations/node_modules/
