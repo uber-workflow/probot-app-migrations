@@ -38,12 +38,14 @@ module.exports = robot => {
         },
         status,
       );
-      return github.repos.createStatus(context.repo(params));
+      return github.repos.createForAuthenticatedUserStatus(
+        context.repo(params),
+      );
     }
 
     const filename = `${pr.number.toString().padStart(5, '0')}.md`;
 
-    const labels = await context.github.issues.getIssueLabels(
+    const labels = await context.github.issues.listLabelsOnIssue(
       context.repo({number: pr.number}),
     );
 
@@ -71,7 +73,7 @@ module.exports = robot => {
       Promise.all(
         packages.map(async pkg => {
           try {
-            const res = await context.github.repos.getContent(
+            const res = await context.github.repos.getContents(
               context.repo({
                 path: join(pkg, 'docs/migrations'),
                 ref: pr.head.sha,
