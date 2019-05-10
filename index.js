@@ -38,9 +38,7 @@ module.exports = robot => {
         },
         status,
       );
-      return github.repos.createForAuthenticatedUserStatus(
-        context.repo(params),
-      );
+      return github.repos.createStatus(context.repo(params));
     }
 
     const filename = `${pr.number.toString().padStart(5, '0')}.md`;
