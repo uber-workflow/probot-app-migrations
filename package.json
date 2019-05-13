@@ -1,6 +1,6 @@
 {
   "name": "probot-app-migrations",
-  "version": "1.0.6-0",
+  "version": "1.0.6-1",
   "description": "GitHub App that that enforces the creation of migration guides",
   "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
   "contributors": [],
