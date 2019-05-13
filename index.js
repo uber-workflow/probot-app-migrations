@@ -44,7 +44,7 @@ module.exports = robot => {
     const filename = `${pr.number.toString().padStart(5, '0')}.md`;
 
     const labels = await context.github.issues.listLabelsOnIssue(
-      context.repo({number: pr.number}),
+      context.repo({issue_number: pr.number}),
     );
 
     const isBreaking = labels.data.reduce((breaking, label) => {
